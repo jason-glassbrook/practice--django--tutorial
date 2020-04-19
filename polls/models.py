@@ -9,3 +9,18 @@ class Question(models.Model):
     datetime_published = models.DateTimeField(
         "the datetime when the question was published",
     )
+
+
+class Choice(models.Model):
+    question = models.ForeignKey(
+        Question,
+        on_delete=models.CASCADE,
+    )
+    text = models.CharField(
+        "the text of the choice",
+        max_length=200,
+    )
+    vote_count = models.IntegerField(
+        "the number of votes for the choice",
+        default=0,
+    )

@@ -1,6 +1,7 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
+from django.db.models import F
 
 from .models import Choice, Question
 
@@ -56,7 +57,7 @@ def vote(request, question_id):
         return render(request, "polls/detail.html", context)
 
     else:
-        selected_choice.vote_count += 1
+        selected_choice.vote_count = F("vote_count") + 1
         selected_choice.save()
 
         # NOTE:

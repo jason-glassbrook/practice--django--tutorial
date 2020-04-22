@@ -28,7 +28,7 @@ class QuestionModelTests(TestCase):
 
         recent_time = timezone.now() - datetime.timedelta(
             hours=23,
-            minutes=50,
+            minutes=59,
             seconds=59,
         )
         recent_question = Question(datetime_published=recent_time)
@@ -44,6 +44,7 @@ class QuestionModelTests(TestCase):
 
         old_time = timezone.now() - datetime.timedelta(
             days=1,
+            minutes=1,
             seconds=1,
         )
         old_question = Question(datetime_published=old_time)

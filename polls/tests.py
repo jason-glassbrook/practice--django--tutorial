@@ -10,8 +10,8 @@ class QuestionModelTests(TestCase):
 
     def test_was_published_recently_with_future_question(self):
         """
-        was_published_recently() should return False for questions whose
-        datetime_published is in the future.
+        `was_published_recently()` should return `False` for questions whose
+        `datetime_published` is in the future.
         """
 
         future_time = timezone.now() + datetime.timedelta(days=30)
@@ -22,15 +22,11 @@ class QuestionModelTests(TestCase):
 
     def test_was_published_recently_with_recent_question(self):
         """
-        was_published_recently() should return True for questions whose
-        datetime_published is within 1 day.
+        `was_published_recently()` should return `True` for questions whose
+        `datetime_published` is within 1 day.
         """
 
-        recent_time = timezone.now() - datetime.timedelta(
-            hours=23,
-            minutes=59,
-            seconds=59,
-        )
+        recent_time = timezone.now() - datetime.timedelta(days=1, seconds=-1)
         recent_question = Question(datetime_published=recent_time)
         self.assertIs(recent_question.was_published_recently(), True)
 
@@ -38,15 +34,11 @@ class QuestionModelTests(TestCase):
 
     def test_was_published_recently_with_old_question(self):
         """
-        was_published_recently() should return True for questions whose
-        datetime_published is older than 1 day.
+        `was_published_recently()` should return `False` for questions whose
+        `datetime_published` is older than 1 day.
         """
 
-        old_time = timezone.now() - datetime.timedelta(
-            days=1,
-            minutes=1,
-            seconds=1,
-        )
+        old_time = timezone.now() - datetime.timedelta(days=1, seconds=1)
         old_question = Question(datetime_published=old_time)
         self.assertIs(old_question.was_published_recently(), False)
 

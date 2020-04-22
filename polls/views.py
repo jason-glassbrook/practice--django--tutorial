@@ -1,8 +1,9 @@
-from django.views.generic import ListView, DetailView
+from django.db.models import F
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
-from django.db.models import F
+from django.utils import timezone
+from django.views.generic import ListView, DetailView
 
 from .models import Choice, Question
 
@@ -12,8 +13,14 @@ class IndexView(ListView):
     template_name = "polls/index.html"
 
     def get_queryset(self):
-        """Return the 5 most-recently published questions."""
-        return Question.objects.order_by("-datetime_published")[:5]
+        """
+        Return the 5 most-recently published questions,
+        not including those scheduled to be published in the future.
+        """
+
+        return Question.objects.filter(
+            datetime_published__lte=timezone.now(),
+        ).order_by("-datetime_published")[:5]
 
 
 class DetailView(DetailView):

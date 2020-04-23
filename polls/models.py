@@ -20,6 +20,10 @@ class Question(models.Model):
         now = timezone.now()
         return (now - datetime.timedelta(days=1)) <= self.datetime_published <= now
 
+    was_published_recently.short_description = "published recently?"
+    was_published_recently.admin_order_field = "datetime_published"
+    was_published_recently.boolean = True
+
 
 class Choice(models.Model):
 

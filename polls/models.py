@@ -7,13 +7,11 @@ from django.utils import timezone
 class Question(models.Model):
 
     text = models.CharField(
-        "the text of the question",
+        "question's text",
         max_length=200,
     )
 
-    datetime_published = models.DateTimeField(
-        "the datetime when the question is published",
-    )
+    datetime_published = models.DateTimeField("question's datetime when published")
 
     def __str__(self):
         return self.text
@@ -31,12 +29,12 @@ class Choice(models.Model):
     )
 
     text = models.CharField(
-        "the text of the choice",
+        "choice's text",
         max_length=200,
     )
 
     vote_count = models.IntegerField(
-        "the number of votes for the choice",
+        "choice's vote count",
         default=0,
     )
 

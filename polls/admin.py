@@ -11,14 +11,18 @@ class ChoiceInline(admin.TabularInline):
 
 class QuestionAdmin(admin.ModelAdmin):
 
-    list_display = (
+    list_display = [
         "text",
         "datetime_published",
         "was_published_recently",
-    )
+    ]
 
     list_filter = [
         "datetime_published",
+    ]
+
+    search_fields = [
+        "text",
     ]
 
     fieldsets = [

@@ -17,6 +17,10 @@ class QuestionAdmin(admin.ModelAdmin):
         "was_published_recently",
     )
 
+    list_filter = [
+        "datetime_published",
+    ]
+
     fieldsets = [
         (None, {
             "fields": ["datetime_published"],

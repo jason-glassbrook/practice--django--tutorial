@@ -1,6 +1,15 @@
 from django.contrib import admin
+from django.urls import reverse
 
 from .models import Question, Choice
+
+
+class PollsAdminSite(admin.AdminSite):
+
+    name = "polls-admin-site"
+    site_url = "/polls/"
+    site_title = "Polls Admin Site"
+    site_header = "Polls Administration"
 
 
 class ChoiceInline(admin.TabularInline):
@@ -39,4 +48,5 @@ class QuestionAdmin(admin.ModelAdmin):
     ]
 
 
-admin.site.register(Question, QuestionAdmin)
+polls_admin_site = PollsAdminSite()
+polls_admin_site.register(Question, QuestionAdmin)

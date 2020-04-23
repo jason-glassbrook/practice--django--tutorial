@@ -11,6 +11,12 @@ class ChoiceInline(admin.TabularInline):
 
 class QuestionAdmin(admin.ModelAdmin):
 
+    list_display = (
+        "text",
+        "datetime_published",
+        "was_published_recently",
+    )
+
     fieldsets = [
         (None, {
             "fields": ["datetime_published"],

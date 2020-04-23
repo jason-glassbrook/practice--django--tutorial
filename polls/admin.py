@@ -5,9 +5,13 @@ from .models import Question, Choice
 
 class QuestionAdmin(admin.ModelAdmin):
 
-    fields = [
-        "datetime_published",
-        "text",
+    fieldsets = [
+        (None, {
+            "fields": ["datetime_published"],
+        }),
+        ("Datetime information", {
+            "fields": ["text"],
+        }),
     ]
 
 

@@ -12,7 +12,7 @@ class Question(models.Model):
     )
 
     datetime_published = models.DateTimeField(
-        "the datetime when the question was published",
+        "the datetime when the question is published",
     )
 
     def __str__(self):

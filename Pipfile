@@ -14,6 +14,7 @@ dj-database-url = "*"
 gunicorn = "*"
 python-decouple = "*"
 whitenoise = "*"
+django-cors-headers = "*"
 
 [requires]
 python_version = "3.8"

@@ -9,8 +9,10 @@ yapf = "*"
 
 [packages]
 django = "*"
-gunicorn = "*"
 django-heroku = "*"
+dj-database-url = "*"
+gunicorn = "*"
+python-decouple = "*"
 whitenoise = "*"
 
 [requires]
